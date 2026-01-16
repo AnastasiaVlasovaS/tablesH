@@ -1,28 +1,31 @@
-package com.example.tablesH;
+package com.example.tablesH.entity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users") // Название таблицы
-public class User {
+@Table(name = "persons")
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
+    private String surname;
     private String city;
+    private int age;
 
-    // Конструкторы
-    public User() {
+    public Person() {
     }
 
-    public User(String name, String city) {
+    public Person(String name, String surname, String city, int age) {
         this.name = name;
+        this.surname = surname;
         this.city = city;
+        this.age = age;
     }
 
-    // геттеры и сеттеры
+
     public Long getId() {
         return id;
     }
@@ -39,11 +42,27 @@ public class User {
         this.name = name;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     public String getCity() {
         return city;
     }
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

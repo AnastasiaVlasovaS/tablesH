@@ -1,26 +1,23 @@
 package com.example.tablesH;
 
-
-import com.example.tablesH.entity.User;
-import com.example.tablesH.repository.UserRepository;
+import com.example.tablesH.entity.Person;
+import com.example.tablesH.repository.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-    private final UserRepository userRepository;
+    private final PersonRepository personRepository;
 
-    public DataInitializer(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public DataInitializer(PersonRepository personRepository) {
+        this.personRepository = personRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        userRepository.entityManager.persist(new User("Ivan", "Moscow"));
-        userRepository.entityManager.persist(new User("Sergey", "Saint-Petersburg"));
-        userRepository.entityManager.persist(new User("Anna", "Moscow"));
-        userRepository.entityManager.persist(new User("Oleg", "Kiev"));
-
+        personRepository.save(new Person("Ivan", "Ivanov", "Moscow", 25));
+        personRepository.save(new Person("Petr", "Petrov", "Moscow", 35));
+        personRepository.save(new Person("Anna", "Sidorova", "Kazan", 28));
     }
 }
