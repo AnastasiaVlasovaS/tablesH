@@ -58,4 +58,14 @@ public class PersonController {
     public Optional<Person> getPersonByNameAndSurname(@RequestParam String name, @RequestParam String surname) {
         return personRepository.findByNameAndSurname(name, surname);
     }
+
+    @GetMapping("/public")
+    public String publicEndpoint() {
+        return "Это публичный доступ без авторизации!";
+    }
+
+    @GetMapping("/private")
+    public String privateEndpoint() {
+        return "Это защищённый ресурс, для доступа нужно залогиниться.";
+    }
 }
